@@ -42,11 +42,11 @@ export class SearchComponent implements OnInit, OnDestroy {
   }
 
   search() {
-    this.spinner.show();
     this.searchDataEmitter.next(this.searchInput);
   }
 
   handleSearch(val: string | number) {
+    this.spinner.show();
     this.subscriptions.add(this.searchService.getSearchResult(val)
       .pipe(
         debounceTime(400),
